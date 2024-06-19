@@ -1,0 +1,31 @@
+def reverse(x):
+    INT_MAX = 2**31 - 1
+    INT_MIN = -2**31
+    
+    # Handle negative sign
+    sign = 1
+    if x < 0:
+        sign = -1
+        x = -x
+    
+    reversed_x = 0
+    while x != 0:
+        # Extract the last digit
+        digit = x % 10
+        # Build the reversed number
+        reversed_x = reversed_x * 10 + digit
+        # Remove the last digit from x
+        x = x // 10
+    
+    # Apply the sign to the reversed number
+    reversed_x *= sign
+    
+    # Check for overflow condition
+    if reversed_x < INT_MIN or reversed_x > INT_MAX:
+        return 0
+    
+    return reversed_x
+
+# Example usage
+x = 123
+print(reverse(x))  # Output: 321
